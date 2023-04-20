@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   app:
-    container_name: postgres_node
+    container_name: docker-postgres-node
     restart: always
     build: .
     ports:
