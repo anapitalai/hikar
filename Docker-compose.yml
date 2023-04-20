@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+  app:
+    container_name: postgres_node
+    restart: always
+    build: .
+    ports:
+      - "80:3001"
+    links: postgres_docker
+  db:
+    container_name: postgres_docker
+    image: postgis/postgis:15-3.3
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: postgres
+    ports:
+     ###host_os_port:docker_port
+      - "5432:5432"
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: anapitalai@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: noGoZone
+    ports:
+      - "5050:80"
